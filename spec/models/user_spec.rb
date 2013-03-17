@@ -24,4 +24,21 @@ describe User do
 		too_long_name_user = User.new(@attr.merge(:name => bad_name))
 		too_long_name_user.should_not be_valid
 	end
+
+	it "should accept valid email addresses" do
+		correct_mails = %w[user@domain.com user.user@domain.fr.ua test_user@am.ru]
+		correct_mails.each do |mail| 
+			user = User.new(@attr.merge(:email => mail))
+			user.should be_valid
+		end
+	end
+
+	it "should not accept invalid email addresses" do
+		bad_mails = %w[user @domain.com user@domain user@]
+		bad_mails.each do |mail|
+			user = User.new(@attr.merge(:email => mail))
+			user.should_not be_valid
+		end
+	end
+
 end
