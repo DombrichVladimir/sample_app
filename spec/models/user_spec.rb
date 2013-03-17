@@ -18,4 +18,10 @@ describe User do
 		no_email_user = User.new(@attr.merge(:email => ""))
 		no_email_user.should_not be_valid
 	end
+
+	it "should reject names that are too long" do
+		bad_name = "a" * 51
+		too_long_name_user = User.new(@attr.merge(:name => bad_name))
+		too_long_name_user.should_not be_valid
+	end
 end
