@@ -2,7 +2,12 @@ require 'spec_helper'
 
 describe User do
 	before(:each) do
-		@attr = { :name => "Petya Kakashkin", :email => "kakashko@millisoft.com" }
+		@attr = { 
+			:name => "Petya Kakashkin", 
+			:email => "kakashko@millisoft.com", 
+			:password => "mysecurepass111",
+			:password_confirmation => "mysecurepass111"
+		 }
 	end
 
 	it "should create a new instance given valid attributes" do
